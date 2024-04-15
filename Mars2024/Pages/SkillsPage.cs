@@ -62,7 +62,7 @@ namespace Mars2024.Pages
             IWebElement updateSkillButton = driver.FindElement(By.XPath("//input[@value='Update']"));
             updateSkillButton.Click();
             Console.WriteLine("update button clicked");
-            WaitUtils.WaitToBeVisible(driver, "xpath", "//td[text()='Multitasking']", 10);
+            WaitUtils.WaitToBeVisible(driver, "xpath", "//td[text()='Multitasker']", 10);
 
             IWebElement editSkillAdded = driver.FindElement(By.XPath("//td[text()='Multitasker']"));
             Assert.That(editSkillAdded.Text == "Multitasker", "New Skill not updated");
