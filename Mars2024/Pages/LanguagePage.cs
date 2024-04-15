@@ -1,4 +1,5 @@
 ﻿using Mars2024.Utilities;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -44,15 +45,7 @@ namespace Mars2024.Pages
             WaitUtils.WaitToBeVisible(driver, "XPath", "//td[text()='English']", 5);
             //check if language is added
             IWebElement newLangAdded = driver.FindElement(By.XPath("//td[text()='English']"));
-            if (newLangAdded.Text == "English")
-            {
-                Console.WriteLine("New Lang added");
-            }
-            else
-            {
-                Console.WriteLine("New Lang not added");
-            }
-
+            Assert.That((newLangAdded.Text == "English"), "New Lang not added");
         }
         public void EditLanguage(IWebDriver driver)
         {
@@ -75,20 +68,13 @@ namespace Mars2024.Pages
             updateLangButton.Click();
             WaitUtils.WaitToBeVisible(driver, "xpath", "//td[text()='Manglish']", 5);
             IWebElement editLangAdded = driver.FindElement(By.XPath("//td[text()='Manglish']"));
-            if (editLangAdded.Text == "Manglish")
-            {
-                Console.WriteLine("Lang updated");
-            }
-            else
-            {
-                Console.WriteLine("Lang not updated");
-            }
+            Assert.That(editLangAdded.Text == "Manglish", "Lang not updated");
         }
         public void RemoveLanguage(IWebDriver driver)
         {
             IWebElement deleteLangButton = driver.FindElement(By.CssSelector("i[class='remove icon']"));
             deleteLangButton.Click();
-            WaitUtils.WaitToBeVisible(driver, "cssselector", "div[class='ns-box-inner']",10);
+            WaitUtils.WaitToBeVisible(driver, "cssselector", "div[class='ns-box-inner']", 10);
             IWebElement deleteLangAdded = driver.FindElement(By.CssSelector("div[class='ns-box-inner']"));
             if (deleteLangAdded.Text == "Manglish")
             {
@@ -98,13 +84,7 @@ namespace Mars2024.Pages
             {
                 Console.WriteLine("Lang deleted");
             }
-
+            Assert.That(deleteLangAdded.Text != "Manglish", "Lang not deleted");
         }
-
-
-
-
-
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Mars2024.Utilities;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -6,15 +7,22 @@ namespace Mars2024.Pages
 {
     public class ProfileHomePage
     {
-        
+
 
         public void NavigateToLanguagePanel(IWebDriver driver)
         {
-            WaitUtils.WaitToBeVisible(driver, "XPath", "//a[text()='Languages']",5);
-            //navigate to language 
-            IWebElement languageTab = driver.FindElement(By.XPath("//a[text()='Languages']"));
-            languageTab.Click();
-           
+            try
+            {
+                WaitUtils.WaitToBeVisible(driver, "XPath", "//a[text()='Languages']", 5);
+                //navigate to language 
+                IWebElement languageTab = driver.FindElement(By.XPath("//a[text()='Languages']"));
+                languageTab.Click();
+            }
+            catch(Exception ex) 
+            {
+                Assert.Fail("Panel not clickable");
+            }
+            
         }
         public void NavigateToSkillsPanel(IWebDriver driver)
         {

@@ -1,4 +1,5 @@
 ﻿using Mars2024.Utilities;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace Mars2024.Pages
             //Enter language 
             skillsTextbox = driver.FindElement(skillsTextboxLocator);
             skillsTextbox.SendKeys(skills);
-            
+
             //choose language level from dropdown
             skillLevelOption = driver.FindElement(skillLevelOptionLocator);
             skillLevelOption.Click();
@@ -38,18 +39,11 @@ namespace Mars2024.Pages
             //click on add button
             IWebElement addSkillButton = driver.FindElement(By.CssSelector("input[class='ui teal button ']"));
             addSkillButton.Click();
-            
+
             WaitUtils.WaitToBeVisible(driver, "xpath", "//td[text()='Multitasking']", 7);
             //check if language is added
             IWebElement newSkillAdded = driver.FindElement(By.XPath("//td[text()='Multitasking']"));
-            if (newSkillAdded.Text == "Multitasking")
-            {
-                Console.WriteLine("New Skill added");
-            }
-            else
-            {
-                Console.WriteLine("New Skill not added");
-            }
+            Assert.That(newSkillAdded.Text == "Multitasking", "New Skill not added");
         }
         public void EditSkill(IWebDriver driver)
         {
@@ -62,23 +56,16 @@ namespace Mars2024.Pages
             editSkillTextbox.Clear();
             editSkillTextbox.SendKeys("Multitasker");
             //Enter skill level 
-             editSkillLevel = driver.FindElement(editSkillLevelLocator);
-             editSkillLevel.Click();
-             //click on update button
-             IWebElement updateSkillButton = driver.FindElement(By.XPath("//input[@value='Update']"));
-             updateSkillButton.Click();
+            editSkillLevel = driver.FindElement(editSkillLevelLocator);
+            editSkillLevel.Click();
+            //click on update button
+            IWebElement updateSkillButton = driver.FindElement(By.XPath("//input[@value='Update']"));
+            updateSkillButton.Click();
             Console.WriteLine("update button clicked");
             WaitUtils.WaitToBeVisible(driver, "xpath", "//td[text()='Multitasking']", 10);
 
-             IWebElement editSkillAdded = driver.FindElement(By.XPath("//td[text()='Multitasker']"));
-             if (editSkillAdded.Text == "Multitasker")
-             {
-                 Console.WriteLine("Skill updated");
-             }
-             else
-             {
-                 Console.WriteLine("Skill not updated");
-             }
+            IWebElement editSkillAdded = driver.FindElement(By.XPath("//td[text()='Multitasker']"));
+            Assert.That(editSkillAdded.Text == "Multitasker", "New Skill not updated");
         }
         public void RemoveSkill(IWebDriver driver)
         {
@@ -94,7 +81,7 @@ namespace Mars2024.Pages
             {
                 Console.WriteLine("Skill deleted");
             }
-
+            Assert.That(deleteSkillAdded.Text != "Multitasking", "New Skill not updated");
         }
     }
 }
