@@ -1,19 +1,18 @@
-﻿using Mars2024.Utilities;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+using SpecFlowProjectMars.Utilities;
 
-namespace Mars2024.Pages
+namespace SpecFlowProjectMars.Pages
 {
     public class ProfileHomePage
     {
-
-
+        
         public void NavigateToLanguagePanel(IWebDriver driver)
         {
+            
             try
             {
-                WaitUtils.WaitToBeVisible(driver, "XPath", "//a[text()='Languages']", 5);
+                //WaitUtils.WaitToBeVisible(driver, "XPath", "//a[text()='Languages']", 5);
                 //navigate to language 
                 IWebElement languageTab = driver.FindElement(By.XPath("//a[text()='Languages']"));
                 languageTab.Click();
@@ -26,17 +25,24 @@ namespace Mars2024.Pages
         }
         public void NavigateToSkillsPanel(IWebDriver driver)
         {
-            WaitUtils.WaitToBeVisible(driver, "XPath", "//a[text()='Skills']", 5);
-            //navigate to language 
-            IWebElement skillsTab = driver.FindElement(By.XPath("//a[text()='Skills']"));
-            skillsTab.Click();
-
+            try
+            {
+                //WaitUtils.WaitToBeVisible(driver, "XPath", "//a[text()='Skills']", 5);
+                //navigate to language 
+                IWebElement skillsTab = driver.FindElement(By.XPath("//a[text()='Skills']"));
+                skillsTab.Click();
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Panel not clickable");
+            }
         }
 
         public void VerifyLoggedInUser(IWebDriver driver)
         {
+            Thread.Sleep(1000);
             //Check if user has loggedin Successfully
-            IWebElement checkUser = driver.FindElement(By.XPath("//span[@tabindex='0']"));
+            IWebElement checkUser = driver.FindElement(By.XPath("//span[contains(text(),'Hi')]"));
             if (checkUser.Text == "Hi Geothy")
             {
 

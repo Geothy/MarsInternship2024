@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mars2024.Utilities
+namespace SpecFlowProjectMars.Utilities
 {
     public class WaitUtils
     {

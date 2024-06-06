@@ -1,7 +1,7 @@
-﻿using Mars2024.Utilities;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
+using SpecFlowProjectMars.Utilities;
 
-namespace Mars2024.Pages
+namespace SpecFlowProjectMars.Pages
 {
     public class LoginPage
     {
@@ -15,15 +15,14 @@ namespace Mars2024.Pages
         IWebElement logInButton;
         public void LoginActions(IWebDriver driver, string username, string password)
         {
-            driver.Manage().Window.Maximize();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            
             //Launch Turnup Portal & Navigate to Login Page
-            string baseURL = " http://localhost:5000/";
+            string baseURL = "http://localhost:5000/";
             driver.Navigate().GoToUrl(baseURL);
             //Identify Signin Button & Click on Signin Button
             signInButton = driver.FindElement(signInButtonLocator);
             signInButton.Click();
-            WaitUtils.WaitToBeVisible(driver, "XPath", "//input[@name='email']", 5);
+            //WaitUtils.WaitToBeVisible(driver, "XPath", "//input[@name='email']", 5);
             //Identify Username textbox & enter valid username
             usernameTextbox = driver.FindElement(usernameTextboxLocator);
             usernameTextbox.SendKeys(username);
