@@ -20,7 +20,7 @@ namespace SpecFlowProjectMars.Pages
         private static IWebElement deleteLangAdded => driver.FindElement(By.CssSelector("div[class='ns-box-inner']"));
              
       public void ClearData()
-        {
+      {
             try
             {                
                 var deleteButton = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[2]/i"));
@@ -34,8 +34,8 @@ namespace SpecFlowProjectMars.Pages
                 Console.WriteLine("Nothing to delete");
             }
 
-        }
-        public void AddLanguage(IWebDriver driver, string language, string level)
+      }
+        public void AddLanguage(string language, string level)
         {
             //Add new language
             addNewLangButton.Click();
@@ -45,40 +45,23 @@ namespace SpecFlowProjectMars.Pages
             selectLangLevelOption.Click();
            //click on add button
             addLangButton.Click();
+            Thread.Sleep(3000);       
         }
-        public void AddLanguageAssertion(IWebDriver driver, string language)
-        {
-            //check if language is added
-            Thread.Sleep(1000);
-            string verifyLang = language + " has been added to your languages";
-            Assert.AreEqual(verifyLang,popupmsg.Text);
-        }
-        public void EditLanguage(IWebDriver driver)
+        public void EditLanguage(string language,string level)
         {
             editNewLangButton.Click();
             //Enter language 
             editLangTextbox.Clear();
-            editLangTextbox.SendKeys("Manglish");
+            editLangTextbox.SendKeys(language);
             //choose language level from dropdown
             editselectLangLevelOption.Click();
             Thread.Sleep(1000);
             //click on add button
             updateLangButton.Click();
         }
-        public void EditLanguageAssert(IWebDriver driver)
-        {
-            Thread.Sleep(1000);
-            Assert.That(editLangAdded.Text == "Manglish", "Lang not updated");
-        }
-        public void RemoveLanguage(IWebDriver driver)
+        public void RemoveLanguage()
         {
             deleteLangButton.Click();
-        }
-        public void RemoveLanguageAssert(IWebDriver driver)
-        {
-            // WaitUtils.WaitToBeVisible(driver, "cssselector", "div[class='ns-box-inner']", 10);
-            Thread.Sleep(1000);
-            Assert.That(deleteLangAdded.Text != "Manglish", "Lang not deleted");
-        }
+        }      
     }
 }

@@ -3,7 +3,7 @@ using SpecFlowProjectMars.Utilities;
 
 namespace SpecFlowProjectMars.Pages
 {
-    public class LoginPage
+    public class LoginPage:CommonDriver
     {
         private readonly By signInButtonLocator = By.XPath("//a[text()='Sign In']");
         IWebElement signInButton;
@@ -13,7 +13,7 @@ namespace SpecFlowProjectMars.Pages
         IWebElement passwordTextbox;
         private readonly By loginButtonLocator = By.XPath("//button[text()='Login']");
         IWebElement logInButton;
-        public void LoginActions(IWebDriver driver, string username, string password)
+        public void LoginActions(string username, string password)
         {
             
             //Launch Turnup Portal & Navigate to Login Page
@@ -22,7 +22,6 @@ namespace SpecFlowProjectMars.Pages
             //Identify Signin Button & Click on Signin Button
             signInButton = driver.FindElement(signInButtonLocator);
             signInButton.Click();
-            //WaitUtils.WaitToBeVisible(driver, "XPath", "//input[@name='email']", 5);
             //Identify Username textbox & enter valid username
             usernameTextbox = driver.FindElement(usernameTextboxLocator);
             usernameTextbox.SendKeys(username);

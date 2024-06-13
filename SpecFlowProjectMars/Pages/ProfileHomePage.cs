@@ -4,10 +4,10 @@ using SpecFlowProjectMars.Utilities;
 
 namespace SpecFlowProjectMars.Pages
 {
-    public class ProfileHomePage
+    public class ProfileHomePage: CommonDriver
     {
         
-        public void NavigateToLanguagePanel(IWebDriver driver)
+        public void NavigateToLanguagePanel()
         {
             
             try
@@ -23,7 +23,7 @@ namespace SpecFlowProjectMars.Pages
             }
             
         }
-        public void NavigateToSkillsPanel(IWebDriver driver)
+        public void NavigateToSkillsPanel()
         {
             try
             {
@@ -38,7 +38,7 @@ namespace SpecFlowProjectMars.Pages
             }
         }
 
-        public void VerifyLoggedInUser(IWebDriver driver)
+        public void VerifyLoggedInUser()
         {
             Thread.Sleep(1000);
             //Check if user has loggedin Successfully

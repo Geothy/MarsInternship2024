@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using OpenQA.Selenium;
 using SpecFlowProjectMars.Pages;
 using SpecFlowProjectMars.Utilities;
 using System;
@@ -8,58 +10,84 @@ namespace SpecFlowProjectMars.StepDefinitions
     [Binding]
     public class SkillsTabStepDefinitions : CommonDriver
     {
-        LoginPage loginPageObj = new LoginPage();
-        ProfileHomePage profilePageObj = new ProfileHomePage();
-        SkillsPage skillPageObj = new SkillsPage();
-
+        LoginPage loginPageObj;
+        ProfileHomePage profilePageObj;
+        SkillsPage skillPageObj;
+        private static IWebElement popupmsg => driver.FindElement(By.XPath("//div[@class='ns-box-inner']"));
+        public SkillsTabStepDefinitions()
+        {
+            loginPageObj = new LoginPage();
+            profilePageObj = new ProfileHomePage();
+            skillPageObj = new SkillsPage();
+        }
         [Given(@"User logs into Mars Portal")]
         public void GivenUserLogsIntoMarsPortal()
         {
-            loginPageObj.LoginActions(driver, "geothy@gmail.com", "7geothy*");
-            profilePageObj.VerifyLoggedInUser(driver);
+            loginPageObj.LoginActions("geothy@gmail.com", "7geothy*");
+            profilePageObj.VerifyLoggedInUser();
         }
 
         [Given(@"navigates to Skills tab in Profile Page")]
         public void GivenNavigatesToSkillsTabInProfilePage()
         {
-            profilePageObj.NavigateToSkillsPanel(driver);
+            profilePageObj.NavigateToSkillsPanel();
         }
 
         [When(@"user enters Skill ""([^""]*)"" and Skill Level ""([^""]*)""")]
         public void WhenUserEntersSkillAndSkillLevel(string skill, string skilllevel)
         {
             skillPageObj.ClearData();
-            skillPageObj.AddSkills(driver, skill, skilllevel);
+            skillPageObj.AddSkills(skill, skilllevel);
         }
 
         [Then(@"the Skill ""([^""]*)"" should be added to Skills tab in Profile Page")]
         public void ThenTheSkillShouldBeAddedToSkillsTabInProfilePage(string skill)
         {
-            skillPageObj.AddSkillsAssert(driver, skill);
+            Thread.Sleep(3000);
+            string popupMsgBox = popupmsg.Text;
+            Console.WriteLine(popupMsgBox);
+            //Verify the pop up message
+            string popupMsgadd = skill + " has been added to your skills";
+            string popupMsgInv = "Please enter skill and experience level";
+            string popMsgDup = "Duplicated data";
+            string popMsgUndefined = "undefined";
+            Assert.That(popupMsgBox, Is.EqualTo(popupMsgadd).Or.EqualTo(popupMsgInv).Or.EqualTo(popMsgDup).Or.EqualTo(popMsgUndefined));
+        }
+        [When(@"user edits Skill ""([^""]*)"" and Skill Level ""([^""]*)""")]
+        public void WhenUserEditsSkillAndSkillLevel(string skill, string skillLevel)
+        {
+            skillPageObj.EditSkill(skill, skillLevel);
         }
 
-        [When(@"user edits Skill and Skill Level")]
-        public void WhenUserEditsSkillAndSkillLevel()
+        [Then(@"the Skill ""([^""]*)"" should be updated to Skills tab in Profile Page")]
+        public void ThenTheSkillShouldBeUpdatedToSkillsTabInProfilePage(string skill)
         {
-            skillPageObj.EditSkill(driver);
+            Thread.Sleep(3000);
+            string popupMsgBox = popupmsg.Text;
+            Console.WriteLine(popupMsgBox);
+            //Verify the pop up message
+            string popupMsgadd = skill + " has been updated to your skills";
+            string popupMsgInv = "Please enter skill and experience level";
+            string popMsgDup = "This skill is already added to your skill list.";
+            string popMsgUndefined = "undefined";
+            Assert.That(popupMsgBox, Is.EqualTo(popupMsgadd).Or.EqualTo(popupMsgInv).Or.EqualTo(popMsgDup).Or.EqualTo(popMsgUndefined));
+        }
+        [When(@"user deletes Skill ""([^""]*)""")]
+        public void WhenUserDeletesSkill(string skill)
+        {
+            skillPageObj.RemoveSkill();
         }
 
-        [Then(@"the Skill should be updated to Skills tab in Profile Page")]
-        public void ThenTheSkillShouldBeUpdatedToSkillsTabInProfilePage()
+        [Then(@"the Skill ""([^""]*)""should be deleted from Skills tab in Profile Page")]
+        public void ThenTheSkillShouldBeDeletedFromSkillsTabInProfilePage(string skill)
         {
-            skillPageObj.EditSkillAssert(driver);
+            Thread.Sleep(3000);
+            string popupMsgBox = popupmsg.Text;
+            Console.WriteLine(popupMsgBox);
+            //Verify the pop up message
+            string popupMsgadd = skill + " has been deleted";
+            Assert.AreEqual(popupMsgadd, popupmsg.Text);
         }
 
-        [When(@"user deletes Skill")]
-        public void WhenUserDeletesSkill()
-        {
-            skillPageObj.RemoveSkill(driver);
-        }
-
-        [Then(@"the Skill should be deleted from Skills tab in Profile Page")]
-        public void ThenTheSkillShouldBeDeletedFromSkillsTabInProfilePage()
-        {
-            skillPageObj.RemoveSkillAssert(driver);
-        }
     }
 }

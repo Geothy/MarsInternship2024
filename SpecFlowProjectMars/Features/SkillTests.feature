@@ -9,20 +9,30 @@ And navigates to Skills tab in Profile Page
 When user enters Skill "<Skill>" and Skill Level "<Level>"
 Then the Skill "<Skill>" should be added to Skills tab in Profile Page
 Examples: 
-| Skill        | Level    |
+| Skill        | Level        |
 | Multitasking | Intermediate |
-| Or123on      | Beginner |
+| Or++**123on  | Beginner     |
+|              |              |
+|              | Intermediate |
+| abcdefg      | Beginner     |
 
 
-
-Scenario:B.Verify user is able to edit Skill in Skills tab in the profile page
+Scenario Outline:B.Verify user is able to edit Skill in Skills tab in the profile page
 Given User logs into Mars Portal
 And navigates to Skills tab in Profile Page
-When user edits Skill and Skill Level
-Then the Skill should be updated to Skills tab in Profile Page
+When user edits Skill "<Skill>" and Skill Level "<Level>"
+Then the Skill "<Skill>" should be updated to Skills tab in Profile Page
+Examples: 
+| Skill       | Level        |
+| Multitasker | Beginner     |
+|             |              |
+| asd++       | Intermediate |
 
-Scenario:C.Verify user is able to delete Skill in Skills tab in the profile page
+Scenario Outline:C.Verify user is able to delete Skill in Skills tab in the profile page
 Given User logs into Mars Portal
 And navigates to Skills tab in Profile Page
-When user deletes Skill 
-Then the Skill should be deleted from Skills tab in Profile Page
+When user deletes Skill "<Skill>"
+Then the Skill "<Skill>"should be deleted from Skills tab in Profile Page
+Examples: 
+| Skill |
+| asd++ |

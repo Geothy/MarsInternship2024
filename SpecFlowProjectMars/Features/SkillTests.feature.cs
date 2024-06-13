@@ -76,7 +76,10 @@ namespace SpecFlowProjectMars.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("A.Verify user is able to add Skill in Skills tab in the profile page")]
         [NUnit.Framework.TestCaseAttribute("Multitasking", "Intermediate", null)]
-        [NUnit.Framework.TestCaseAttribute("Or123on", "Beginner", null)]
+        [NUnit.Framework.TestCaseAttribute("Or++**123on", "Beginner", null)]
+        [NUnit.Framework.TestCaseAttribute("", "", null)]
+        [NUnit.Framework.TestCaseAttribute("", "Intermediate", null)]
+        [NUnit.Framework.TestCaseAttribute("abcdefg", "Beginner", null)]
         public virtual void A_VerifyUserIsAbleToAddSkillInSkillsTabInTheProfilePage(string skill, string level, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -122,12 +125,17 @@ testRunner.Then(string.Format("the Skill \"{0}\" should be added to Skills tab i
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("B.Verify user is able to edit Skill in Skills tab in the profile page")]
-        public virtual void B_VerifyUserIsAbleToEditSkillInSkillsTabInTheProfilePage()
+        [NUnit.Framework.TestCaseAttribute("Multitasker", "Beginner", null)]
+        [NUnit.Framework.TestCaseAttribute("", "", null)]
+        [NUnit.Framework.TestCaseAttribute("asd++", "Intermediate", null)]
+        public virtual void B_VerifyUserIsAbleToEditSkillInSkillsTabInTheProfilePage(string skill, string level, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Skill", skill);
+            argumentsOfScenario.Add("Level", level);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("B.Verify user is able to edit Skill in Skills tab in the profile page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 18
+#line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -147,17 +155,17 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 19
+#line 21
 testRunner.Given("User logs into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 20
+#line 22
 testRunner.And("navigates to Skills tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 21
-testRunner.When("user edits Skill and Skill Level", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 23
+testRunner.When(string.Format("user edits Skill \"{0}\" and Skill Level \"{1}\"", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 22
-testRunner.Then("the Skill should be updated to Skills tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 24
+testRunner.Then(string.Format("the Skill \"{0}\" should be updated to Skills tab in Profile Page", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -165,12 +173,14 @@ testRunner.Then("the Skill should be updated to Skills tab in Profile Page", ((s
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("C.Verify user is able to delete Skill in Skills tab in the profile page")]
-        public virtual void C_VerifyUserIsAbleToDeleteSkillInSkillsTabInTheProfilePage()
+        [NUnit.Framework.TestCaseAttribute("asd++", null)]
+        public virtual void C_VerifyUserIsAbleToDeleteSkillInSkillsTabInTheProfilePage(string skill, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Skill", skill);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("C.Verify user is able to delete Skill in Skills tab in the profile page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 24
+#line 31
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -190,17 +200,17 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 25
+#line 32
 testRunner.Given("User logs into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 26
+#line 33
 testRunner.And("navigates to Skills tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 27
-testRunner.When("user deletes Skill", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 34
+testRunner.When(string.Format("user deletes Skill \"{0}\"", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 28
-testRunner.Then("the Skill should be deleted from Skills tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 35
+testRunner.Then(string.Format("the Skill \"{0}\"should be deleted from Skills tab in Profile Page", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

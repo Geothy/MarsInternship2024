@@ -13,7 +13,8 @@ namespace SpecFlowProjectMars.Pages
         IWebElement editSkillTextbox => driver.FindElement(By.XPath("//input[@placeholder='Add Skill']"));
         IWebElement editSkillLevel => driver.FindElement(By.XPath("//option[text()='Beginner']"));
         IWebElement newSkillAdded => driver.FindElement(By.XPath("//td[text()='Multitasking']"));
-        IWebElement editNewSkillButton => driver.FindElement(By.CssSelector("i[class='outline write icon']"));
+        //IWebElement editNewSkillButton => driver.FindElement(By.CssSelector("i[class='outline write icon']"));
+        IWebElement editNewSkillButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody/tr/td[3]/span[1]/i"));
         IWebElement updateSkillButton => driver.FindElement(By.XPath("//input[@value='Update']"));
         IWebElement editSkillAdded => driver.FindElement(By.XPath("//td[text()='Multitasker']"));
         IWebElement deleteSkillButton => driver.FindElement(By.CssSelector("i[class='remove icon']"));
@@ -33,7 +34,7 @@ namespace SpecFlowProjectMars.Pages
             catch { }
 
         }
-        public void AddSkills(IWebDriver driver, string skills, string skillLevel)
+        public void AddSkills(string skills, string skillLevel)
         {
             //Add new language
             addNewSkillButton.Click();
@@ -42,40 +43,23 @@ namespace SpecFlowProjectMars.Pages
             //choose language level from dropdown
             skillLevelOption.Click();
             //click on add button
-            addSkillButton.Click();
-
+            addSkillButton.Click();            
         }
-        public void AddSkillsAssert(IWebDriver driver, string skills)
+        public void EditSkill(string skills,string skillLevel)
         {
-            //check if language is added
-            //Assert.That(newSkillAdded.Text == "Multitasking", "New Skill not added");
             Thread.Sleep(1000);
-            string verifySkill = skills + " has been added to your skills";
-            Assert.AreEqual(verifySkill, popupmsg.Text);
-        }
-        public void EditSkill(IWebDriver driver)
-        {
             editNewSkillButton.Click();
             //Enter skill 
             editSkillTextbox.Clear();
-            editSkillTextbox.SendKeys("Multitasker");
+            editSkillTextbox.SendKeys(skills);
             //Enter skill level 
             editSkillLevel.Click();
             //click on update button
             updateSkillButton.Click();
-
         }
-        public void EditSkillAssert(IWebDriver driver)
-        {
-            Assert.That(editSkillAdded.Text == "Multitasker", "New Skill not updated");
-        }
-        public void RemoveSkill(IWebDriver driver)
+        public void RemoveSkill()
         {
             deleteSkillButton.Click();
-        }
-        public void RemoveSkillAssert(IWebDriver driver)
-        {
-            Assert.That(deleteSkillAdded.Text != "Multitasking", "New Skill not updated");
         }
     }
 }
