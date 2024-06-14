@@ -15,6 +15,10 @@ namespace SpecFlowProjectMars.StepDefinitions
         ProfileHomePage profilePageObj;
         LanguagePage languagePageObj;
         private static IWebElement popupmsg => driver.FindElement(By.XPath("//div[@class='ns-box-inner']"));
+        string popupMsgInv = "Please enter language and level";
+        string popMsgSame = "This language is already added to your language list.";
+        string popMsgDup = "Duplicated data";
+        string popMsgUndefined = "undefined";
         public LanguageTabStepDefinitions()
         {
             loginPageObj = new LoginPage();
@@ -45,10 +49,7 @@ namespace SpecFlowProjectMars.StepDefinitions
             string popupMsgBox = popupmsg.Text;
             Console.WriteLine(popupMsgBox);
             string popupMsgadd = language + " has been added to your languages";
-            string popupMsgInv = "Please enter language and level";
-            string popMsgDup = "This language is already added to your language list.";
-            string popMsgUndefined = "undefined";
-            Assert.That(popupMsgBox, Is.EqualTo(popupMsgadd).Or.EqualTo(popupMsgInv).Or.EqualTo(popMsgDup).Or.EqualTo(popMsgUndefined));
+            Assert.That(popupMsgBox, Is.EqualTo(popupMsgadd).Or.EqualTo(popupMsgInv).Or.EqualTo(popMsgSame).Or.EqualTo(popMsgUndefined).Or.EqualTo(popMsgDup));
         }
         [When(@"user edits Language ""([^""]*)"" and Language Level ""([^""]*)""")]
         public void WhenUserEditsLanguageAndLanguageLevel(string language, string level)
@@ -64,10 +65,7 @@ namespace SpecFlowProjectMars.StepDefinitions
             Console.WriteLine(popupMsgBox);
             //Verify the pop up message
             string popupMsgadd = language + " has been updated to your languages";
-            string popupMsgInv = "Please enter language and level";
-            string popMsgDup = "This language is already added to your language list.";
-            string popMsgUndefined = "undefined";
-            Assert.That(popupMsgBox, Is.EqualTo(popupMsgadd).Or.EqualTo(popupMsgInv).Or.EqualTo(popMsgDup).Or.EqualTo(popMsgUndefined));
+            Assert.That(popupMsgBox, Is.EqualTo(popupMsgadd).Or.EqualTo(popupMsgInv).Or.EqualTo(popMsgSame).Or.EqualTo(popMsgDup).Or.EqualTo(popMsgUndefined));
         }
         [When(@"user deletes the Language ""([^""]*)""")]
         public void WhenUserDeletesTheLanguage(string language)

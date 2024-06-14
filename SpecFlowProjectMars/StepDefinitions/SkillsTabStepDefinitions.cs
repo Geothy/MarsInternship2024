@@ -14,6 +14,10 @@ namespace SpecFlowProjectMars.StepDefinitions
         ProfileHomePage profilePageObj;
         SkillsPage skillPageObj;
         private static IWebElement popupmsg => driver.FindElement(By.XPath("//div[@class='ns-box-inner']"));
+        string popupMsgInv = "Please enter skill and experience level";
+        string popMsgSame = "This skill is already added to your skill list.";
+        string popMsgDup = "Duplicated data";
+        string popMsgUndefined = "undefined";
         public SkillsTabStepDefinitions()
         {
             loginPageObj = new LoginPage();
@@ -32,14 +36,12 @@ namespace SpecFlowProjectMars.StepDefinitions
         {
             profilePageObj.NavigateToSkillsPanel();
         }
-
         [When(@"user enters Skill ""([^""]*)"" and Skill Level ""([^""]*)""")]
         public void WhenUserEntersSkillAndSkillLevel(string skill, string skilllevel)
         {
             skillPageObj.ClearData();
             skillPageObj.AddSkills(skill, skilllevel);
         }
-
         [Then(@"the Skill ""([^""]*)"" should be added to Skills tab in Profile Page")]
         public void ThenTheSkillShouldBeAddedToSkillsTabInProfilePage(string skill)
         {
@@ -48,17 +50,13 @@ namespace SpecFlowProjectMars.StepDefinitions
             Console.WriteLine(popupMsgBox);
             //Verify the pop up message
             string popupMsgadd = skill + " has been added to your skills";
-            string popupMsgInv = "Please enter skill and experience level";
-            string popMsgDup = "Duplicated data";
-            string popMsgUndefined = "undefined";
-            Assert.That(popupMsgBox, Is.EqualTo(popupMsgadd).Or.EqualTo(popupMsgInv).Or.EqualTo(popMsgDup).Or.EqualTo(popMsgUndefined));
+            Assert.That(popupMsgBox, Is.EqualTo(popupMsgadd).Or.EqualTo(popupMsgInv).Or.EqualTo(popMsgSame).Or.EqualTo(popMsgDup).Or.EqualTo(popMsgUndefined));
         }
         [When(@"user edits Skill ""([^""]*)"" and Skill Level ""([^""]*)""")]
         public void WhenUserEditsSkillAndSkillLevel(string skill, string skillLevel)
         {
             skillPageObj.EditSkill(skill, skillLevel);
         }
-
         [Then(@"the Skill ""([^""]*)"" should be updated to Skills tab in Profile Page")]
         public void ThenTheSkillShouldBeUpdatedToSkillsTabInProfilePage(string skill)
         {
@@ -67,17 +65,13 @@ namespace SpecFlowProjectMars.StepDefinitions
             Console.WriteLine(popupMsgBox);
             //Verify the pop up message
             string popupMsgadd = skill + " has been updated to your skills";
-            string popupMsgInv = "Please enter skill and experience level";
-            string popMsgDup = "This skill is already added to your skill list.";
-            string popMsgUndefined = "undefined";
-            Assert.That(popupMsgBox, Is.EqualTo(popupMsgadd).Or.EqualTo(popupMsgInv).Or.EqualTo(popMsgDup).Or.EqualTo(popMsgUndefined));
+            Assert.That(popupMsgBox, Is.EqualTo(popupMsgadd).Or.EqualTo(popupMsgInv).Or.EqualTo(popMsgSame).Or.EqualTo(popMsgUndefined).Or.EqualTo(popMsgDup));
         }
         [When(@"user deletes Skill ""([^""]*)""")]
         public void WhenUserDeletesSkill(string skill)
         {
             skillPageObj.RemoveSkill();
         }
-
         [Then(@"the Skill ""([^""]*)""should be deleted from Skills tab in Profile Page")]
         public void ThenTheSkillShouldBeDeletedFromSkillsTabInProfilePage(string skill)
         {
@@ -88,6 +82,5 @@ namespace SpecFlowProjectMars.StepDefinitions
             string popupMsgadd = skill + " has been deleted";
             Assert.AreEqual(popupMsgadd, popupmsg.Text);
         }
-
     }
 }

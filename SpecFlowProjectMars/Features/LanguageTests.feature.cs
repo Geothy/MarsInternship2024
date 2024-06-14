@@ -75,11 +75,13 @@ namespace SpecFlowProjectMars.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("A.Verify user is able to add language in Languages tab in the profile page")]
-        [NUnit.Framework.TestCaseAttribute("English", "", null)]
+        [NUnit.Framework.TestCaseAttribute("English", "Choose Language Level", null)]
         [NUnit.Framework.TestCaseAttribute("123Mara+++thi", "Basic", null)]
-        [NUnit.Framework.TestCaseAttribute("", "", null)]
+        [NUnit.Framework.TestCaseAttribute("", "Choose language level", null)]
         [NUnit.Framework.TestCaseAttribute("", "Basic", null)]
         [NUnit.Framework.TestCaseAttribute("Malayalam", "Fluent", null)]
+        [NUnit.Framework.TestCaseAttribute("MALAYALAM", "Conversational", null)]
+        [NUnit.Framework.TestCaseAttribute("Malayalam", "Native", null)]
         public virtual void A_VerifyUserIsAbleToAddLanguageInLanguagesTabInTheProfilePage(string language, string level, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -108,16 +110,16 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
-testRunner.Given("user logs into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("user logs into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
-testRunner.And("navigates to Languages tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("navigates to Languages tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
-testRunner.When(string.Format("user enters Language \"{0}\" and Language Level \"{1}\"", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("user enters Language \"{0}\" and Language Level \"{1}\"", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
-testRunner.Then(string.Format("the language \"{0}\" should be added to Languages tab in Profile Page", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the language \"{0}\" should be added to Languages tab in Profile Page", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -126,7 +128,7 @@ testRunner.Then(string.Format("the language \"{0}\" should be added to Languages
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("B.Verify user is able to edit language in Languages tab in the profile page")]
         [NUnit.Framework.TestCaseAttribute("Marathi", "Basic", null)]
-        [NUnit.Framework.TestCaseAttribute("", "Basic", null)]
+        [NUnit.Framework.TestCaseAttribute("Marathi", "Conversational", null)]
         [NUnit.Framework.TestCaseAttribute("Hindi", "Fluent", null)]
         public virtual void B_VerifyUserIsAbleToEditLanguageInLanguagesTabInTheProfilePage(string language, string level, string[] exampleTags)
         {
@@ -135,7 +137,7 @@ testRunner.Then(string.Format("the language \"{0}\" should be added to Languages
             argumentsOfScenario.Add("Language", language);
             argumentsOfScenario.Add("Level", level);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("B.Verify user is able to edit language in Languages tab in the profile page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 20
+#line 22
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -155,17 +157,17 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 21
-testRunner.Given("user logs into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 22
-testRunner.And("navigates to Languages tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 23
-testRunner.When(string.Format("user edits Language \"{0}\" and Language Level \"{1}\"", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("user logs into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 24
-testRunner.Then(string.Format("the language \"{0}\" should be edited into Languages tab in Profile Page", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("navigates to Languages tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 25
+ testRunner.When(string.Format("user edits Language \"{0}\" and Language Level \"{1}\"", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 26
+ testRunner.Then(string.Format("the language \"{0}\" should be edited into Languages tab in Profile Page", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -181,7 +183,7 @@ testRunner.Then(string.Format("the language \"{0}\" should be edited into Langua
             argumentsOfScenario.Add("Language", language);
             argumentsOfScenario.Add("Level", level);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("C.Verify user is able to delete language in Languages tab in the profile page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 31
+#line 33
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -201,17 +203,17 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 32
-testRunner.Given("user logs into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 33
-testRunner.And("navigates to Languages tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 34
-testRunner.When(string.Format("user deletes the Language \"{0}\"", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("user logs into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 35
-testRunner.Then(string.Format("the language \"{0}\" should be deleted from Languages tab in Profile Page", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("navigates to Languages tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 36
+ testRunner.When(string.Format("user deletes the Language \"{0}\"", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 37
+ testRunner.Then(string.Format("the language \"{0}\" should be deleted from Languages tab in Profile Page", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -77,9 +77,9 @@ namespace SpecFlowProjectMars.Features
         [NUnit.Framework.DescriptionAttribute("A.Verify user is able to add Skill in Skills tab in the profile page")]
         [NUnit.Framework.TestCaseAttribute("Multitasking", "Intermediate", null)]
         [NUnit.Framework.TestCaseAttribute("Or++**123on", "Beginner", null)]
-        [NUnit.Framework.TestCaseAttribute("", "", null)]
+        [NUnit.Framework.TestCaseAttribute("", "Choose Skill Level", null)]
         [NUnit.Framework.TestCaseAttribute("", "Intermediate", null)]
-        [NUnit.Framework.TestCaseAttribute("abcdefg", "Beginner", null)]
+        [NUnit.Framework.TestCaseAttribute("Communication", "Expert", null)]
         public virtual void A_VerifyUserIsAbleToAddSkillInSkillsTabInTheProfilePage(string skill, string level, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -108,16 +108,16 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
-testRunner.Given("User logs into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("User logs into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
-testRunner.And("navigates to Skills tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("navigates to Skills tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
-testRunner.When(string.Format("user enters Skill \"{0}\" and Skill Level \"{1}\"", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("user enters Skill \"{0}\" and Skill Level \"{1}\"", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
-testRunner.Then(string.Format("the Skill \"{0}\" should be added to Skills tab in Profile Page", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the Skill \"{0}\" should be added to Skills tab in Profile Page", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -126,8 +126,8 @@ testRunner.Then(string.Format("the Skill \"{0}\" should be added to Skills tab i
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("B.Verify user is able to edit Skill in Skills tab in the profile page")]
         [NUnit.Framework.TestCaseAttribute("Multitasker", "Beginner", null)]
-        [NUnit.Framework.TestCaseAttribute("", "", null)]
-        [NUnit.Framework.TestCaseAttribute("asd++", "Intermediate", null)]
+        [NUnit.Framework.TestCaseAttribute("", "Choose Skill Level", null)]
+        [NUnit.Framework.TestCaseAttribute("asd++", "Expert", null)]
         public virtual void B_VerifyUserIsAbleToEditSkillInSkillsTabInTheProfilePage(string skill, string level, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -156,16 +156,16 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 21
-testRunner.Given("User logs into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("User logs into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 22
-testRunner.And("navigates to Skills tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("navigates to Skills tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 23
-testRunner.When(string.Format("user edits Skill \"{0}\" and Skill Level \"{1}\"", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("user edits Skill \"{0}\" and Skill Level \"{1}\"", skill, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 24
-testRunner.Then(string.Format("the Skill \"{0}\" should be updated to Skills tab in Profile Page", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the Skill \"{0}\" should be updated to Skills tab in Profile Page", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -201,16 +201,16 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 32
-testRunner.Given("User logs into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("User logs into Mars Portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 33
-testRunner.And("navigates to Skills tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("navigates to Skills tab in Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 34
-testRunner.When(string.Format("user deletes Skill \"{0}\"", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("user deletes Skill \"{0}\"", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 35
-testRunner.Then(string.Format("the Skill \"{0}\"should be deleted from Skills tab in Profile Page", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the Skill \"{0}\"should be deleted from Skills tab in Profile Page", skill), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
